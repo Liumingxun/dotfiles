@@ -148,7 +148,7 @@ esac
 # pnpm end
 
 export EDITOR="vim"
-. ./.aliases
+. ~/.aliases
 
 # autoload ssh-agent
 env=~/.ssh/agent.env
