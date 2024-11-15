@@ -18,9 +18,11 @@ zmodule input
 zmodule termtitle
 # Utility aliases and functions. Adds colour to ls, grep and less.
 zmodule utility
+# ssh agent
+zmodule ssh
 # Systemd aliases
 # https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/systemd/systemd.plugin.zsh
-zmodule /usr/share/zsh/plugins/systemd
+zmodule ohmyzsh/ohmyzsh --root plugins/systemd
 
 
 #
@@ -45,7 +47,7 @@ zmodule zsh-users/zsh-completions --fpath src
 # Enables and configures smart and extensive tab completion.
 # completion must be sourced after all modules that add completion definitions.
 zmodule completion
-
+zmodule git@github.com:g-plane/pnpm-shell-completion.git --on-pull './zplug.zsh'
 #
 # Modules that must be initialized last
 #
