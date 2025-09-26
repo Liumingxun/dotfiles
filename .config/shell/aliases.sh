@@ -1,10 +1,10 @@
-#!/usr/bin/bash
-
 path(){
     echo "$PATH" | tr ':' '\n' | grep -v '/mnt'
 }
-alias _="sudo "
+
 if uname -r | grep -qi "wsl"; then
     alias o=explorer.exe
 fi
-alias ls='eza --group-directories-first --x'
+
+alias _="sudo "
+alias ls='eza --group-directories-first -x'
