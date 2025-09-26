@@ -35,7 +35,7 @@ WORDCHARS=${WORDCHARS//[\/]}
 # -----------------
 
 # Use degit instead of git as the default tool to install and update modules.
-zstyle ':zim:zmodule' use 'degit'
+#zstyle ':zim:zmodule' use 'degit'
 
 # --------------------
 # Module configuration
@@ -112,8 +112,8 @@ if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   fi
 fi
 # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init -q
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init
 fi
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
@@ -135,50 +135,19 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt extendedglob notify
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/lime/.zshrc'
+SHELL_CONFIG="$HOME/.config/shell" # general shell configs
+[ -f "$SHELL_CONFIG/aliases.sh" ] && . "$SHELL_CONFIG/aliases.sh"
 
-# End of lines added by compinstall
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/home/lime/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-export EDITOR="vim"
-. ~/.aliases
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lime/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/lime/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lime/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/lime/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export PATH=$PATH:/usr/local/go/bin
-
-export DENO_INSTALL="/home/lime/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-source ~/.deno-completion.zsh
-source ~/.docker-completion.zsh
-source ~/.github-cli-completion.zsh
-function gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
+. "$HOME/.deno/env"
+. "$HOME/.cargo/env"
