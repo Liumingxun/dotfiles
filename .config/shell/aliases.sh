@@ -7,4 +7,4 @@ if uname -r | grep -qi "wsl"; then
 fi
 
 alias _="sudo "
-alias ls='eza --group-directories-first -x'
+alias ls='eza --group-directories-first -xF'
