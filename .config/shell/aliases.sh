@@ -6,6 +6,10 @@ path(){
     curl -s https://gist.githubusercontent.com/Liumingxun/a8fc3578bd88d076b2f9fe3fdc0ead13/raw/1875ff9b84a014214d0ce9d922654bb34001198e/24-bit-color.sh | sh
 }
 
+gi() {
+    curl -sL https://www.toptal.com/developers/gitignore/api/$@
+}
+
 if uname -r | grep -qi "wsl"; then
     alias o=explorer.exe
 fi
