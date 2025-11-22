@@ -142,6 +142,9 @@ SHELL_CONFIG="$HOME/.config/shell" # general shell configs
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# bun completions
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
@@ -150,5 +153,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+export PATH=$PATH:/usr/local/go/bin
+
 #. "$HOME/.deno/env"
 #. "$HOME/.cargo/env"
+
