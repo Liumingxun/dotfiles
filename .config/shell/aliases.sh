@@ -2,8 +2,12 @@ path(){
     echo "$PATH" | tr ':' '\n' | grep -v '/mnt'
 }
 
+has() {
+    command -v "$1" >/dev/null 2>&1
+}
+
 24bitcolor() {
-    curl -s https://gist.githubusercontent.com/Liumingxun/a8fc3578bd88d076b2f9fe3fdc0ead13/raw/1875ff9b84a014214d0ce9d922654bb34001198e/24-bit-color.sh | sh
+    bash <(curl -s https://gist.githubusercontent.com/Liumingxun/a8fc3578bd88d076b2f9fe3fdc0ead13/raw/1875ff9b84a014214d0ce9d922654bb34001198e/24-bit-color.sh)
 }
 
 gi() {

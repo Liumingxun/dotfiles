@@ -141,9 +141,8 @@ SHELL_CONFIG="$HOME/.config/shell" # general shell configs
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# bun completions
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+# bun end
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -158,3 +157,8 @@ export PATH=$PATH:/usr/local/go/bin
 #. "$HOME/.deno/env"
 #. "$HOME/.cargo/env"
 
+# foundry
+has anvil && source <(anvil com zsh)
+has forge && source <(forge com zsh)
+has cast && source <(cast com zsh)
+# foundry end
