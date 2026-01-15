@@ -155,7 +155,7 @@ esac
 export PATH=$PATH:/usr/local/go/bin
 
 #. "$HOME/.deno/env"
-#. "$HOME/.cargo/env"
+[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # foundry
 has anvil && source <(anvil com zsh)
