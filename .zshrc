@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by interactive shells
@@ -100,7 +102,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Initialize modules
 # ------------------
 
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   if (( ${+commands[curl]} )); then
@@ -112,7 +114,7 @@ if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   fi
 fi
 # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-$HOME}/.zimrc} ]]; then
   source ${ZIM_HOME}/zimfw.zsh init
 fi
 # Initialize modules.
@@ -135,12 +137,14 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-SHELL_CONFIG="$HOME/.config/shell" # general shell configs
+# general shell configs
+SHELL_CONFIG="$HOME/.config/shell"
 [ -f "$SHELL_CONFIG/aliases.sh" ] && . "$SHELL_CONFIG/aliases.sh"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+# bun completions
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 # bun end
 
@@ -152,13 +156,13 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-export PATH=$PATH:/usr/local/go/bin
-
-#. "$HOME/.deno/env"
-[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # foundry
 has anvil && source <(anvil com zsh)
 has forge && source <(forge com zsh)
 has cast && source <(cast com zsh)
 # foundry end
+
+[ -s "$HOME/.g/env" ] && source "$HOME/.g/env"  
+[ -s "$HOME/.deno/env" ] && source "$HOME/.deno/env"
+[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
