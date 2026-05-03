@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-mem_usage() {
+mem() {
     local type="${1:-free}"
     
     if [ "$type" = "free" ]; then
@@ -8,9 +8,9 @@ mem_usage() {
     elif [ "$type" = "used" ]; then
         free -b | awk 'NR==2 {printf "%dMB\n", ($3)/1024/1024}'
     else
-        echo "Usage: mem_usage [free|used]"
+        echo "Usage: mem [free|used]"
         return 1
     fi
 }
 
-echo "f:$(mem_usage free) u:$(mem_usage used)"
+echo "f:$(mem free) u:$(mem used)"

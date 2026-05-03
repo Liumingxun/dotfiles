@@ -1,4 +1,4 @@
-path(){
+lspath(){
     echo "$PATH" | tr ':' '\n' | grep -v '/mnt'
 }
 
@@ -15,7 +15,8 @@ gi() {
 }
 
 if uname -r | grep -qi "wsl"; then
-    alias o=explorer.exe
+    export PATH="$HOME/.local/wsl-bin:$PATH"
+    chmod +x $HOME/.local/wsl-bin/*
 fi
 
 alias _="sudo "
