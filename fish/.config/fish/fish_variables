@@ -7,4 +7,4 @@ SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1edanhper/fish\x2dssh\x2dagent
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_greeting:\x1d
-SETUVAR fish_user_paths:/home/limx/\x2elocal/wsl\x2dbin\x1e/home/limx/\x2elocal/share/pnpm\x1e/home/limx/\x2ebun/bin
+SETUVAR fish_user_paths:/home/limx/go/bin\x1e/home/limx/\x2eg/go/bin\x1e/home/limx/\x2eg/bin\x1e/home/limx/\x2elocal/wsl\x2dbin\x1e/home/limx/\x2elocal/share/pnpm\x1e/home/limx/\x2ebun/bin
