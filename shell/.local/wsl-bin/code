@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-/mnt/c/ProgramData/scoop/apps/vscode/current/bin/code $@
